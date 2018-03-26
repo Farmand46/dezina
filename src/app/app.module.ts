@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ProductDetailPage } from "../pages/product-detail/product-detail";
+
 
 // Hentet disse og placeret dem i Imports
 import {HttpClientModule} from "@angular/common/http"
@@ -25,7 +27,8 @@ import { ProductProvider } from '../providers/product/product';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProductDetailPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ProductProvider } from '../providers/product/product';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProductDetailPage
   ],
   providers: [
     ProductProvider,
