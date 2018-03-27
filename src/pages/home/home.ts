@@ -15,13 +15,43 @@ import {OpenFilterPage} from "../../pages/open-filter/open-filter";
 })
 export class HomePage {
   public allProducts =[];
+  private femaleSelected = true;
+  private maleSelected = true;
 
   constructor(private modalController: ModalController, private productProvider : ProductProvider, private http: Http, public navCtrl: NavController) {
    
   }
   
   openFilterModal(){
-    let openFilterModal = this.modalController.create(OpenFilterPage);
+    let filterStateFromMainPage = {
+      femaleSelected: this.femaleSelected,
+      maleSelected: this.maleSelected
+    }
+    let openFilterModal = this.modalController.create(OpenFilterPage, filterStateFromMainPage);
+    openFilterModal.onDidDismiss((filterState)=>{
+      this.femaleSelected = filterState.femaleSelected;
+      this.maleSelected = filterState.maleSelected;
+      
+      //console.log(filterState);
+      this.productProvider.getProducts().subscribe((allProducts)=>{
+        let products = allProducts;
+        if (filterState.maleSelected && filterState.femaleSelected){
+          this.allProducts = products;
+          return; 
+        } else if(!filterState.maleSelected && !filterState.femaleSelected){
+          this.allProducts = [];
+          return
+        } else if(!filterState.maleSelected && filterState.femaleSelected ){
+          this.allProducts = products.filter((product)=>{
+            return product.gender !== "male"
+          });
+        } else {
+          this.allProducts = products.filter((product)=>{
+            return product.gender !== "female"
+          });
+        }
+      });
+    });
     openFilterModal.present();
   }
 
