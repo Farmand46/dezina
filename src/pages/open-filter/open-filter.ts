@@ -18,6 +18,8 @@ export class OpenFilterPage {
   public maleSelected=true;
 
   constructor(private viewController: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+    this.femaleSelected = this.navParams.get("femaleSelected");
+    this.maleSelected = this.navParams.get("maleSelected");
   }
 
   ionViewDidLoad() {
