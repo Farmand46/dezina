@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ProductDetailPage } from "../pages/product-detail/product-detail";
+import { OpenFilterPage } from "../pages/open-filter/open-filter";
+
 
 
 // Hentet disse og placeret dem i Imports
@@ -28,7 +30,8 @@ import { ProductProvider } from '../providers/product/product';
     ContactPage,
     HomePage,
     TabsPage,
-    ProductDetailPage
+    ProductDetailPage,
+    OpenFilterPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ProductProvider } from '../providers/product/product';
     ContactPage,
     HomePage,
     TabsPage,
-    ProductDetailPage
+    ProductDetailPage,
+    OpenFilterPage
   ],
   providers: [
     ProductProvider,
